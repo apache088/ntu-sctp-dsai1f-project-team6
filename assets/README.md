@@ -1,0 +1,1 @@
+# for storing image files (or similar) which are used in markdown (md) files
