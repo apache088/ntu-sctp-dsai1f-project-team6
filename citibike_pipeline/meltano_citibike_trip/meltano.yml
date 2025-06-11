@@ -23,6 +23,8 @@ plugins:
       dataset: ${BIGQUERY_DATASET}
       credentials_path: ${BIGQUERY_CREDENTIALS_PATH}
       method: batch_job
+      batch_size: 100000  # Increased batch size
+      max_parallelism: 8  # Parallel upload threads
       denormalized: true
       flattening_enabled: true
       flattening_max_depth: 1
