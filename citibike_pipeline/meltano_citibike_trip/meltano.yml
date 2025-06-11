@@ -1,6 +1,6 @@
 version: 1
 default_environment: dev
-project_id: f9c0be5b-9e0e-450c-bfa6-051308009686
+project_id: 0da7aa26-0c60-410b-86d7-0748d3deb9d5
 environments:
 - name: dev
 - name: staging
@@ -26,7 +26,9 @@ plugins:
       denormalized: true
       flattening_enabled: true
       flattening_max_depth: 1
-        # Enable upsert (merge) functionality
-      write_disposition: MERGE  # or WRITE_TRUNCATE (see options below)
-      merge_on_columns: ["ride_id"]  # Primary key column(s)
-      dedupe_on: "ride_id"          # Optional: Deduplicate before merging        # Columns to match for updates
+      write_disposition: MERGE
+      merge: true
+      upsert: true
+      merge_keys:
+        - ride_id
+      dedupe_before_upsert: true

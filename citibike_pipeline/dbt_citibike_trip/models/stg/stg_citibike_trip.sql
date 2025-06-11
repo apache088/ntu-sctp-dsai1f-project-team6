@@ -1,22 +1,27 @@
 -- models/staging/stg_bike_trips.sql
-WITH source_data AS (
-  SELECT
-    ride_id,
-    rideable_type,
-    -- Cast to TIMESTAMP
-    TIMESTAMP(started_at) AS started_at,
-    TIMESTAMP(ended_at) AS ended_at,
-    start_station_name,
-    start_station_id,
-    end_station_name,
-    end_station_id,
-    -- Cast to FLOAT64 for Haversine math
-    CAST(start_lat AS FLOAT64) AS start_lat,
-    CAST(start_lng AS FLOAT64) AS start_lng,
-    CAST(end_lat AS FLOAT64) AS end_lat,
-    CAST(end_lng AS FLOAT64) AS end_lng,
-    member_casual
-  FROM {{ source('citibike_trip', 'main_raw_citibike_trip') }}
+WITH dedup_source_data AS (
+  SELECT *
+  FROM (
+    SELECT
+      ride_id,
+      rideable_type,
+      -- Cast to TIMESTAMP
+      TIMESTAMP(started_at) AS started_at,
+      TIMESTAMP(ended_at) AS ended_at,
+      start_station_name,
+      start_station_id,
+      end_station_name,
+      end_station_id,
+      -- Cast to FLOAT64 for Haversine math
+      CAST(start_lat AS FLOAT64) AS start_lat,
+      CAST(start_lng AS FLOAT64) AS start_lng,
+      CAST(end_lat AS FLOAT64) AS end_lat,
+      CAST(end_lng AS FLOAT64) AS end_lng,
+      member_casual,
+      ROW_NUMBER() OVER (PARTITION BY ride_id ORDER BY _sdc_received_at DESC) AS row_num
+    FROM {{ source('citibike_trip', 'main_raw_citibike_trip') }}
+  )
+  WHERE row_num = 1
 )
 
 SELECT
@@ -50,4 +55,4 @@ TIMESTAMP_DIFF(ended_at, started_at, SECOND) AS duration_seconds,
   
   -- Add metadata columns
   CURRENT_TIMESTAMP AS dbt_loaded_at
-FROM source_data
+FROM dedup_source_data

@@ -1,3 +1,0 @@
-models:
-  - name: stg_world_athletics
-    description: "world_athletics staging table"
