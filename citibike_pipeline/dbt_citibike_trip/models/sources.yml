@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: "{{ env_var('BIGQUERY_DATASET') }}"
+    database: "{{ env_var('BIGQUERY_PROJECT') }}"
+    tables:
+      - name: "{{ env_var('BIGQUERY_RAW_DATA_TABLE') }}"
