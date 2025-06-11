@@ -1,8 +1,0 @@
-version: 2
-
-sources:
-  - name: meltano_world_athletics
-
-    database: decent-line-461903-p1
-    tables:
-      - name: public_raw_world_athletics
