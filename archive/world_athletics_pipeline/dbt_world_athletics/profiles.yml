@@ -1,0 +1,19 @@
+dbt_world_athletics:
+  target: dev
+  outputs:
+    threads: 1
+    location: US
+    priority: interactive
+    dev:
+      dataset: dbt_world_athletics
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      keyfile: /home/aswerty123/projects/dsai_1f/module_2/ntu-sctp-dsai1f-project-team6/world_athletics_pipeline/decent-line-461903-p1-f568bdd8b9cc.json
+      location: US
+      method: service-account
+      priority: interactive
+      project: decent-line-461903-p1
+      threads: 1
+      type: bigquery
+    config:
+      send_anonymous_usage_stats: False

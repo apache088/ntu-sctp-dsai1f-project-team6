@@ -1,0 +1,56 @@
+# models/schema.yml (fact table addition)
+version: 2
+
+models:
+  - name: fct_performance
+    description: "Fact table tracking athlete performances in competitions, with links to all dimensions"
+    columns:
+      - name: performance_id
+        description: "Surrogate key for the performance record (hash of competitor + event + date + venue)"
+        tests:
+          - not_null
+          - unique
+      
+      # Foreign keys to dimensions
+      - name: athlete_id
+        description: "Reference to dim_athlete"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_athlete')
+              field: athlete_id
+      
+      - name: event_id
+        description: "Reference to dim_event"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_event')
+              field: event_id
+      
+      - name: date_id
+        description: "Reference to dim_date"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: date_id
+      
+      - name: venue_id
+        description: "Reference to dim_venue"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_venue')
+              field: venue_id
+      
+      # Performance metrics
+      - name: rank
+        description: "Final ranking/position in the competition"
+        tests:
+          - not_null
+
+      - name: age_at_event
+        description: "Athlete's age at time of competition"
+        tests:
+          - not_null

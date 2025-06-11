@@ -1,0 +1,85 @@
+version: 2
+
+models:
+  - name: dim_athlete
+    description: "Dimension table for athlete information, tracking competitors and their attributes over time"
+    columns:
+      - name: athlete_id
+        description: "Surrogate key for the athlete (hash of competitor + dob)"
+        tests:
+          - not_null
+          - unique
+      - name: competitor
+        description: "Athlete's full name"
+        tests:
+          - not_null
+      - name: dob
+        description: "Date of birth"
+        tests:
+          - not_null
+
+  - name: dim_date
+    description: "Dimension table for date information with extracted temporal attributes"
+    columns:
+      - name: date_id
+        description: "Surrogate key for the date (hash of date)"
+        tests:
+          - not_null
+          - unique
+      - name: date
+        description: "Calendar date"
+        tests:
+          - not_null
+      - name: year
+        description: "Year extracted from date"
+        tests:
+          - not_null
+
+  - name: dim_event
+    description: "Dimension table for athletic events and disciplines"
+    columns:
+      - name: event_id
+        description: "Surrogate key for the event (hash of normalized_discipline)"
+        tests:
+          - not_null
+          - unique
+      - name: normalized_discipline
+        description: "Standardized name for the discipline"
+        tests:
+          - not_null
+      - name: discipline
+        description: "Original discipline name"
+      - name: type
+        description: "Type of event"
+      - name: is_track
+        description: "Boolean indicating if this is a track event"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: boolean
+      - name: is_field
+        description: "Boolean indicating if this is a field event"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: boolean
+      - name: is_mixed
+        description: "Boolean indicating if this is a mixed discipline"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: boolean
+ 
+  - name: dim_venue
+    description: "Dimension table for competition venues and locations"
+    columns:
+      - name: venue_id
+        description: "Surrogate key for the venue (hash of venue + country)"
+        tests:
+          - not_null
+          - unique
+      - name: venue
+        description: "Name of the competition venue"
+        tests:
+          - not_null
+      - name: venue_country
+        description: "Country where the venue is located"
+        tests:
+          - not_null
