@@ -1,6 +1,6 @@
 version: 1
 default_environment: dev
-project_id: 78cb8ba6-068d-4a4b-89df-37e2afa971c2
+project_id: 395f0fda-5760-49ba-ad3f-ddeaefb865be
 environments:
 - name: dev
 - name: staging
@@ -13,14 +13,14 @@ plugins:
     config:
       flattening_enabled: true
       flattening_max_depth: 1
-      path: /home/hanafi/ntu-sctp-dsai1f-project-team6/db/citibike-tripdata.db
+      path: /home/hanafi/ntu-sctp-dsai1f-project-team6/db/JC-202505-citibike-tripdata.csv
   loaders:
   - name: target-bigquery
     variant: z3z1ma
     pip_url: git+https://github.com/z3z1ma/target-bigquery.git
     config:
       project: forward-garden-461903-m9
-      dataset: citybike
+      dataset: citibike
       credentials_path: 
         /home/hanafi/5m-data-2.6-data-pipelines-orchestration/meltano-ingestion/forward-garden-461903-m9-863379912db1.json
       method: batch_job
