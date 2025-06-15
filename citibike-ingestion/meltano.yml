@@ -1,0 +1,31 @@
+version: 1
+default_environment: dev
+project_id: 40229ed2-1454-4323-aef7-74030ea7660e
+environments:
+- name: dev
+- name: staging
+- name: prod
+plugins:
+  extractors:
+  - name: tap-duckdb
+    variant: meltanolabs
+    pip_url: git+https://github.com/MeltanoLabs/tap-duckdb.git
+    config:
+      path: ../db/citibike-tripdata.db # Update this path to your DuckDB database file.
+  loaders:
+  - name: target-jsonl
+    variant: andyh1203
+    pip_url: target-jsonl
+    config:
+      do_timestamp_file: true
+  - name: target-bigquery
+    variant: z3z1ma
+    pip_url: git+https://github.com/z3z1ma/target-bigquery.git
+    config:
+      project: ntu-sctp-dsai1f-project-team6 # Update this to your GCP project ID.
+      dataset: citibike_ingestion # Update this to your dataset name.
+      method: batch_job
+      denormalized: true
+      flattening_enabled: true
+      flattening_max_depth: 1
+      credentials_path: ./ntu-sctp-dsai1f-project-team6-e8498477876b.json # Update this path to your service account key file.

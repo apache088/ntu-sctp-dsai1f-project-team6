@@ -1,0 +1,52 @@
+version: 2
+
+seeds:
+  - name: price_plans
+    config:
+      quote_columns: true
+      column_types: {membership_type: string, bike_type: string, unlock_fee: float, per_minute_pricing: float, included_mins: integer}
+      delimiter: ","
+    columns:
+      - name: membership_type
+        description: "Type of membership plan"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              value_set: ['casual', 'member']
+      - name: bike_type
+        description: "Type of bike included in the plan"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              value_set: ['classic_bike', 'electric_bike']
+      - name: unlock_fee
+        description: "Fee to unlock the bike"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float64
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              strictly: false  # unlock fee can be zero
+      - name: per_minute_pricing
+        description: "Cost per minute for using the bike"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float64
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              strictly: false  # per minute pricing can be zero
+      - name: included_mins
+        description: "Number of minutes included in the plan"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              strictly: false  # included minutes can be zero

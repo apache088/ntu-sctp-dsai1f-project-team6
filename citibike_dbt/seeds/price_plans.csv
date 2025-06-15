@@ -1,0 +1,5 @@
+membership_type,bike_type,unlock_fee,per_minute_pricing,included_mins
+casual,classic_bike,4.99,0.38,30
+casual,electric_bike,0.00,0.38,0
+member,classic_bike,0.00,0.25,45
+member,electric_bike,0.00,0.25,0
