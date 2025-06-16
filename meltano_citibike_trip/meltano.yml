@@ -1,0 +1,32 @@
+version: 1
+default_environment: dev
+project_id: 4f7aebb1-0fb3-4982-a998-95dbdcba45bc
+environments:
+- name: dev
+- name: staging
+- name: prod
+plugins:
+  extractors:
+  - name: tap-duckdb
+    variant: meltanolabs
+    pip_url: git+https://github.com/MeltanoLabs/tap-duckdb.git
+    config:
+      flattening_enabled: true
+      flattening_max_depth: 1
+      path: ${DUCKDB_PATH}
+  loaders:
+  - name: target-bigquery
+    variant: z3z1ma
+    pip_url: git+https://github.com/z3z1ma/target-bigquery.git
+    config:
+      project: ${BIGQUERY_PROJECT}
+      dataset: ${BIGQUERY_DATASET}
+      credentials_path: ${BIGQUERY_CREDENTIALS_PATH}
+      method: batch_job
+      batch_size: 1000000  # Increased batch size
+      max_parallelism: 16  # Parallel upload threads
+      denormalized: true
+      flattening_enabled: true
+      flattening_max_depth: 1
+      overwrite: true
+      upsert: true
