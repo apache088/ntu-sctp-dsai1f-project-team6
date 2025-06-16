@@ -8,7 +8,7 @@ dbt_world_athletics:
       dataset: dbt_world_athletics
       job_execution_timeout_seconds: 300
       job_retries: 1
-      keyfile: /home/aswerty123/projects/dsai_1f/module_2/ntu-sctp-dsai1f-project-team6/world_athletics_pipeline/decent-line-461903-p1-f568bdd8b9cc.json
+      keyfile: /home/aswerty123/projects/dsai_1f/module_2/ntu-sctp-dsai1f-project-team6/decent-line-461903-p1-f568bdd8b9cc.json
       location: US
       method: service-account
       priority: interactive
