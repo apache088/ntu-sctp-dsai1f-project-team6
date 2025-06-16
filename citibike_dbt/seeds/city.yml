@@ -1,0 +1,24 @@
+version: 2
+
+seeds:
+  - name: price_plans
+    description: "Citibike price plan lookup (unlock fee + per-minute pricing + included minutes)"
+    columns:
+      - name: membership_type
+        description: "Member vs casual"
+      - name: bike_type
+        description: "Classic vs electric bike"
+      - name: unlock_fee
+        description: "Flat fee to unlock the bike"
+      - name: per_minute_pricing
+        description: "Additional per-minute fee beyond included mins"
+      - name: included_mins
+        description: "Number of free minutes included in plan"
+
+  - name: station_cities
+    description: "Lookup of station_key → city name"
+    columns:
+      - name: station_key
+        description: "Unique station identifier"
+      - name: city
+        description: "City (always 'New York' in this dataset)"

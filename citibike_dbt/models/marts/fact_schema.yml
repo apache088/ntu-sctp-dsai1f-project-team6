@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: fact_trips
+    columns:
+      - name: trip_id
+        tests: [not_null, unique]
+      - name: started_at
+        tests: [not_null]
+      - name: ended_at
+        tests: [not_null]
+      - name: duration_mins
+        tests: [not_null]
+      - name: start_station_id
+        tests: [not_null]
+      - name: end_station_id
+        tests: [not_null]
+      - name: price_plan_id
+        tests: [not_null]
+      - name: unlock_fee
+        tests: [not_null]
+      - name: per_minute_pricing
+        tests: [not_null]
+      - name: included_mins
+        tests: [not_null]
+      - name: price_paid
+        tests: [not_null]

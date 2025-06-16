@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: dim_stations
+    columns:
+      - name: station_key
+        tests: [not_null, unique]
+      - name: station_id
+        tests: [not_null]
+      - name: city
+        tests: [not_null]
+      - name: latitude
+        tests: [not_null]
+      - name: longitude
+        tests: [not_null]
+
+  - name: dim_price_plans
+    columns:
+      - name: price_plan_id
+        tests: [not_null, unique]
+      - name: membership_type
+        tests: [not_null]
+      - name: bike_type
+        tests: [not_null]
+      - name: unlock_fee
+        tests: [not_null]
+      - name: per_minute_pricing
+        tests: [not_null]
+      - name: included_mins
+        tests: [not_null]

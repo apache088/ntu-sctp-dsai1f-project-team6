@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: citibike
+    schema: citibike  # Replace with your actual schema in BigQuery
+    tables:
+      - name: trips
+        identifier: JC_202505_citibike_tripdata
