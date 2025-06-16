@@ -65,6 +65,14 @@ models:
               field: bike_type_id
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: string
+      - name: price_plan_id
+        description: "ID of the price plan"
+        tests:
+          - relationships:
+              to: ref('price_plans')
+              field: price_plan_id
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
       - name: price_paid
         description: "Price paid for the trip"
         tests:

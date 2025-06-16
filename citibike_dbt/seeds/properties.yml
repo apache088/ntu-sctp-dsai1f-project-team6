@@ -6,7 +6,18 @@ seeds:
       quote_columns: true
       column_types: {membership_type: string, bike_type: string, unlock_fee: float, per_minute_pricing: float, included_mins: integer}
       delimiter: ","
+      tests:
+      - dbt_expectations.expect_column_pair_values_A_to_be_greater_than_B:
+          column_A: valid_to
+          column_B: valid_from
     columns:
+      - name: price_plan_id
+        description: "Primary key for the price plan"
+        tests:
+          - unique
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
       - name: membership_type
         description: "Type of membership plan"
         tests:
@@ -50,3 +61,15 @@ seeds:
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0
               strictly: false  # included minutes can be zero
+      - name: valid_from
+        description: "Start date of the plan's validity"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date
+      - name: valid_to
+        description: "End date of the plan's validity"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date
