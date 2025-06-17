@@ -1,6 +1,6 @@
 from dagster import asset
 import subprocess
-from ..resources import meltano_dir, meltano_args
+from dagster_citibike.resources import meltano_dir, meltano_args
 
 @asset(
         group_name="meltano_github_json",

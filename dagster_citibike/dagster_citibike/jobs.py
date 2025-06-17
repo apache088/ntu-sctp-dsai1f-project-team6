@@ -1,5 +1,5 @@
 from dagster import define_asset_job, AssetSelection
-from .assets import dbt_assets
+from dagster_citibike.assets import dbt_assets
 
 # Define a job that runs Meltano → dbt
 elt_job = define_asset_job(
