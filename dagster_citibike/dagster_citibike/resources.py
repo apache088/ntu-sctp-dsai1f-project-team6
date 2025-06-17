@@ -2,13 +2,13 @@ from dagster import resource
 from dagster_dbt import DbtCliResource
 
 # Update the following absolute paths to point to the Meltano and dbt projects.
-meltano_dir = "/insert_path_to_project/5m-data-2.6-data-pipelines-orchestration/meltano-ingestion"
+meltano_dir = "../../../citibike-ingestion"
 
-dbt_dir = "/insert_path_to_project/5m-data-2.5-data-warehouse/liquor_sales"
+dbt_dir = "/insert_path_to_project/ntu-sctp-dsai1f-project-team6/citibike_dbt"
 
 # Meltano resources
 meltano_tap = "tap-github"
-meltano_target = "target-jsonl"
+meltano_target = "target-bigquery"
 meltano_args = ["meltano", "run", meltano_tap, meltano_target]
 
 # Dbt resources
