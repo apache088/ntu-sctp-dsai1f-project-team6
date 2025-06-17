@@ -49,6 +49,11 @@ models:
               field: station_key
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: string
+      - name: distance_metres
+        description: "Distance between start and end stations in metres, calculated using BigQuery's ST_DISTANCE function that accounts for the curvature of the Earth."
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
       - name: membership_type_id
         description: "ID of the membership type"
         tests:

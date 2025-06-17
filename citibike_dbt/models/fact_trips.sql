@@ -5,11 +5,18 @@ SELECT
     CAST(TIMESTAMP_DIFF(CAST(ended_at AS TIMESTAMP), CAST(started_at AS TIMESTAMP), MINUTE) AS INT64) AS duration_mins,
     CAST(start_stations.station_key AS STRING) AS start_station_key,
     CAST(end_stations.station_key AS STRING) AS end_station_key,
+    CAST(
+        ST_DISTANCE(
+            ST_GEOGPOINT(start_stations.longitude, start_stations.latitude),
+            ST_GEOGPOINT(end_stations.longitude, end_stations.latitude),
+            TRUE
+        ) AS INT64
+    ) AS distance_metres,
     CAST(membership_types.membership_type_id AS STRING) AS membership_type_id,
     CAST(bike_types.bike_type_id AS STRING) AS bike_type_id,
     CAST(price_plans.price_plan_id AS INT64) AS price_plan_id,
-    ROUND(
-        CAST((
+    CAST(
+        ROUND(
             COALESCE(price_plans.unlock_fee, 0) +
             COALESCE(
                 CASE
@@ -18,9 +25,10 @@ SELECT
                     ELSE 0
                 END,
                 0
-            )
-        ) AS FLOAT64),
-    2) AS price_paid
+            ),
+        2
+        ) AS FLOAT64
+    ) AS price_paid
 FROM
     {{ source('citibike_ingestion', 'main_citibike_tripdata') }} source_data
 INNER JOIN {{ ref('dim_stations') }} start_stations
