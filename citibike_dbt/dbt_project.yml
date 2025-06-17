@@ -6,6 +6,7 @@ profile: 'citibike_dbt'
 
 model-paths: ["models"]
 seed-paths: ["seeds"]
+snapshot-paths: ["snapshots"]   # <-- 👈 You need this line
 
 models:
   citibike_dbt:

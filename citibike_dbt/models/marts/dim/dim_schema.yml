@@ -1,30 +1,93 @@
 version: 2
 
 models:
-  - name: dim_stations
+  - name: dim_bike_types
+    description: "Dimension table for bike types."
     columns:
-      - name: station_key
-        tests: [not_null, unique]
-      - name: station_id
-        tests: [not_null]
-      - name: city
-        tests: [not_null]
-      - name: latitude
-        tests: [not_null]
-      - name: longitude
-        tests: [not_null]
+      - name: bike_type_id
+        description: "Surrogate key for the bike type"
+        tests:
+          - not_null
+          - unique
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+
+      - name: type
+        description: "Type of bike, e.g., classic_bike, electric_bike"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+
+  - name: dim_membership_types
+    description: "Dimension table for membership types."
+    columns:
+      - name: membership_type_id
+        description: "Surrogate key for the membership type"
+        tests:
+          - not_null
+          - unique
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+
+      - name: type
+        description: "Type of membership, e.g., member, casual"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
 
   - name: dim_price_plans
+    description: "Dimension table for price plans per bike and membership type."
     columns:
       - name: price_plan_id
-        tests: [not_null, unique]
+        description: "Primary key for the price plan"
+        tests:
+          - not_null
+          - unique
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
+
       - name: membership_type
-        tests: [not_null]
+        description: "Type of user the plan applies to"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+
       - name: bike_type
-        tests: [not_null]
+        description: "Type of bike the plan applies to"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+
       - name: unlock_fee
-        tests: [not_null]
+        description: "Fee for unlocking the bike"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float64
+
       - name: per_minute_pricing
-        tests: [not_null]
+        description: "Pricing per additional minute beyond included mins"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float64
+
       - name: included_mins
-        tests: [not_null]
+        description: "Minutes included before surcharge"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
+
+      - name: valid_from
+        description: "Start date of plan validity"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date
+
+      - name: valid_to
+        description: "End date of plan validity"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date

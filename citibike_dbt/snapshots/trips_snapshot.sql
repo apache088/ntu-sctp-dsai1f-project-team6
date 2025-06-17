@@ -1,17 +1,20 @@
-{% snapshot station_coords_snapshot %}
-{{
-    config(
-      target_schema='citibike',
-      unique_key='station_id',
-      strategy='check',
-      check_cols=['latitude', 'longitude']
-    )
+{% snapshot fact_trips_snapshot %}
+{{ 
+  config(
+    target_schema='snapshots',
+    unique_key='trip_id',
+    strategy='check',
+    check_cols=[
+      'distance_m',
+      'price_paid',
+      'start_lat',
+      'start_lng',
+      'end_lat',
+      'end_lng'
+    ]
+  ) 
 }}
 
-select
-    station_id,
-    latitude,
-    longitude
-from {{ ref('stg_station_coords') }}
+SELECT * FROM {{ ref('fact_trips') }}
 
 {% endsnapshot %}

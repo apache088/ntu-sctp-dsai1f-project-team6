@@ -1,29 +1,39 @@
 {{ config(materialized='table') }}
 
-with starts as (
-    select distinct
-        start_station_id as station_id,
-        start_lat as latitude,
-        start_lng as longitude
-    from {{ source('citibike', 'trips') }}
-    where start_station_id is not null
+WITH starts AS (
+    SELECT DISTINCT
+        start_station_id AS station_id,
+        start_lat AS latitude,
+        start_lng AS longitude,
+        start_station_name AS station_name
+    FROM {{ source('citibike', 'trips') }}
+    WHERE start_station_id IS NOT NULL
+      AND start_lat IS NOT NULL
+      AND start_lng IS NOT NULL
 ),
-ends as (
-    select distinct
-        end_station_id as station_id,
-        end_lat as latitude,
-        end_lng as longitude
-    from {{ source('citibike', 'trips') }}
-    where end_station_id is not null
+
+ends AS (
+    SELECT DISTINCT
+        end_station_id AS station_id,
+        end_lat AS latitude,
+        end_lng AS longitude,
+        end_station_name AS station_name
+    FROM {{ source('citibike', 'trips') }}
+    WHERE end_station_id IS NOT NULL
+      AND end_lat IS NOT NULL
+      AND end_lng IS NOT NULL
 ),
-all_coords as (
-    select * from starts
-    union distinct
-    select * from ends
+
+all_coords AS (
+    SELECT * FROM starts
+    UNION DISTINCT
+    SELECT * FROM ends
 )
-select
+
+SELECT
     station_id,
-    avg(latitude) as latitude,
-    avg(longitude) as longitude
-from all_coords
-group by station_id
+    AVG(latitude) AS latitude,
+    AVG(longitude) AS longitude,
+    MIN(station_name) AS station_name  -- taking the most consistent name
+FROM all_coords
+GROUP BY station_id
