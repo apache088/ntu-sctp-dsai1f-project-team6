@@ -5,9 +5,9 @@ citibike_dbt: # dbt name. This is where dbt looks for from dbt_project.yml -> fi
     dev:
       type: bigquery
       method: service-account
-      keyfile: "./ntu-sctp-dsai1f-project-team6-e8498477876b.json" # Update this path to your service account key file.
-      project: "ntu-sctp-dsai1f-project-team6" # Update this to your GCP project ID.
-      dataset: "citibike_dbt" # Update this to your dataset name.
+      keyfile: "{{ env_var('BIGQUERY_CREDENTIALS_PATH') }}"
+      project: "{{ env_var('BIGQUERY_PROJECT') }}"
+      dataset: "{{ env_var('BIGQUERY_DATASET') }}"
       location: US
       priority: interactive
   config:

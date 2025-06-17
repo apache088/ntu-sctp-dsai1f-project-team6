@@ -13,7 +13,7 @@ WITH stations AS (
             start_lat AS latitude,
             start_lng AS longitude,
             'start' AS station_role
-        FROM {{ source('citibike_ingestion', 'main_citibike_tripdata') }}
+        FROM {{ source(env_var('BIGQUERY_SOURCE_DATASET'), env_var('BIGQUERY_RAW_DATA_TABLE')) }}
         UNION ALL
         SELECT
             end_station_id AS station_id,
@@ -21,7 +21,7 @@ WITH stations AS (
             end_lat AS latitude,
             end_lng AS longitude,
             'end' AS station_role
-        FROM {{ source('citibike_ingestion', 'main_citibike_tripdata') }}
+        FROM {{ source(env_var('BIGQUERY_SOURCE_DATASET'), env_var('BIGQUERY_RAW_DATA_TABLE')) }}
     ) t
     GROUP BY station_id, station_name, latitude, longitude
 )

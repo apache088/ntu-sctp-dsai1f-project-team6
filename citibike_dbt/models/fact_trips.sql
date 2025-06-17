@@ -30,17 +30,17 @@ SELECT
         ) AS FLOAT64
     ) AS price_paid
 FROM
-    {{ source('citibike_ingestion', 'main_citibike_tripdata') }} source_data
+    {{ source(env_var('BIGQUERY_SOURCE_DATASET'), env_var('BIGQUERY_RAW_DATA_TABLE')) }} source_data
 INNER JOIN {{ ref('dim_stations') }} start_stations
     ON COALESCE(source_data.start_station_id, '') = COALESCE(start_stations.station_id, '')
     AND COALESCE(source_data.start_station_name, '') = COALESCE(start_stations.station_name, '')
-    AND COALESCE(CAST(source_data.start_lat AS FLOAT64), 0) = COALESCE(start_stations.latitude, 0)
-    AND COALESCE(CAST(source_data.start_lng AS FLOAT64), 0) = COALESCE(start_stations.longitude, 0)
+    AND COALESCE(CAST(source_data.start_lat AS FLOAT64), 0.0) = COALESCE(CAST(start_stations.latitude AS FLOAT64), 0.0)
+    AND COALESCE(CAST(source_data.start_lng AS FLOAT64), 0.0) = COALESCE(CAST(start_stations.longitude AS FLOAT64), 0.0)
 INNER JOIN {{ ref('dim_stations') }} end_stations
     ON COALESCE(source_data.end_station_id, '') = COALESCE(end_stations.station_id, '')
     AND COALESCE(source_data.end_station_name, '') = COALESCE(end_stations.station_name, '')
-    AND COALESCE(CAST(source_data.end_lat AS FLOAT64), 0) = COALESCE(end_stations.latitude, 0)
-    AND COALESCE(CAST(source_data.end_lng AS FLOAT64), 0) = COALESCE(end_stations.longitude, 0)
+    AND COALESCE(CAST(source_data.end_lat AS FLOAT64), 0.0) = COALESCE(CAST(end_stations.latitude AS FLOAT64), 0.0)
+    AND COALESCE(CAST(source_data.end_lng AS FLOAT64), 0.0) = COALESCE(CAST(end_stations.longitude AS FLOAT64), 0.0)
 INNER JOIN {{ ref('dim_membership_types') }} membership_types
     ON COALESCE(source_data.member_casual, '') = COALESCE(membership_types.type, '')
 INNER JOIN {{ ref('dim_bike_types') }} bike_types

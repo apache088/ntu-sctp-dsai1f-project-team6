@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: citibike_ingestion
-    database: ntu-sctp-dsai1f-project-team6
+  - name: "{{ env_var('BIGQUERY_SOURCE_DATASET') }}"
+    database: "{{ env_var('BIGQUERY_PROJECT') }}"
     tables:
-      - name: main_citibike_tripdata
+      - name: "{{ env_var('BIGQUERY_RAW_DATA_TABLE') }}"
