@@ -1,0 +1,83 @@
+version: 2
+
+models:
+  - name: fact_trips
+    description: "Fact table for trips."
+    tests:
+    - dbt_expectations.expect_column_pair_values_A_to_be_greater_than_B:
+        column_A: ended_at
+        column_B: started_at
+    columns:
+      - name: trip_id
+        description: "Primary key for this table"
+        tests:
+          - unique
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: started_at
+        description: "Start time of the trip"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: timestamp
+      - name: ended_at
+        description: "End time of the trip"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: timestamp
+      - name: duration_mins
+        description: "Duration of the trip in minutes"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              strictly: true  # duration should be positive
+      - name: start_station_key
+        description: "Key of the start station"
+        tests:
+          - relationships:
+              to: ref('dim_stations')
+              field: station_key
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: end_station_key
+        description: "Key of the end station"
+        tests:
+          - relationships:
+              to: ref('dim_stations')
+              field: station_key
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: membership_type_id
+        description: "ID of the membership type"
+        tests:
+          - relationships:
+              to: ref('dim_membership_types')
+              field: membership_type_id
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: bike_type_id
+        description: "ID of the bike type"
+        tests:
+          - relationships:
+              to: ref('dim_bike_types')
+              field: bike_type_id
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: price_plan_id
+        description: "ID of the price plan"
+        tests:
+          - relationships:
+              to: ref('price_plans')
+              field: price_plan_id
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
+      - name: price_paid
+        description: "Price paid for the trip"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float64
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              strictly: false  # price can be zero for free trips

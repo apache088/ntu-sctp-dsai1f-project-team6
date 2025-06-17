@@ -1,0 +1,83 @@
+version: 2
+
+models:
+  - name: dim_stations
+    description: "Dimension table for stations."
+    columns:
+      - name: station_key
+        description: "Primary key for this table"
+        tests:
+          - unique
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: station_id
+        description: "ID for the station"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: station_name
+        description: "Name of the station"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: latitude
+        description: "Latitude of the station"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float64
+      - name: longitude
+        description: "Longitude of the station"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float64
+      - name: total_starts
+        description: "Total number of starts from this station"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              strictly: false  # total starts can be zero
+      - name: total_ends
+        description: "Total number of ends at this station"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              strictly: false  # total ends can be zero
+  - name: dim_membership_types
+    description: "Dimension table for membership types."
+    columns:
+      - name: membership_type_id
+        description: "Primary key for this table"
+        tests:
+          - unique
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: type
+        description: "Type of membership"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              value_set: ['casual', 'member']
+  - name: dim_bike_types
+    description: "Dimension table for bike types."
+    columns:
+      - name: bike_type_id
+        description: "Primary key for this table"
+        tests:
+          - unique
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+      - name: type
+        description: "Type of bike"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              value_set: ['classic_bike', 'electric_bike']

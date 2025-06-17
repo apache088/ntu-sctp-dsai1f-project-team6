@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: citibike_ingestion
+    database: ntu-sctp-dsai1f-project-team6
+    tables:
+      - name: main_citibike_tripdata
