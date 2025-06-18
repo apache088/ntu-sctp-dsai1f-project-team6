@@ -5,6 +5,7 @@ Table fact_trips {
   duration_mins integer
   start_station_key string
   end_station_key string
+  distance_metres integer
   membership_type_id string
   bike_type_id string
   price_plan_id integer
