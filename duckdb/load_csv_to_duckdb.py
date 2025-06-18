@@ -51,10 +51,10 @@ def load_to_duckdb(filename):
         'start_station_id': 'VARCHAR',
         'end_station_name': 'VARCHAR',
         'end_station_id': 'VARCHAR',
-        'start_lat': 'DOUBLE',
-        'start_lng': 'DOUBLE',
-        'end_lat': 'DOUBLE',
-        'end_lng': 'DOUBLE',
+        'start_lat': 'VARCHAR',
+        'start_lng': 'VARCHAR',
+        'end_lat': 'VARCHAR',
+        'end_lng': 'VARCHAR',
         'member_casual': 'VARCHAR'
     }
     

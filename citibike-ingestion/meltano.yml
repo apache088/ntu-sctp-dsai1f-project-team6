@@ -11,21 +11,20 @@ plugins:
     variant: meltanolabs
     pip_url: git+https://github.com/MeltanoLabs/tap-duckdb.git
     config:
-      path: ../db/citibike-tripdata.db # Update this path to your DuckDB database file.
+      path: ${DUCKDB_PATH}
   loaders:
-  - name: target-jsonl
-    variant: andyh1203
-    pip_url: target-jsonl
-    config:
-      do_timestamp_file: true
   - name: target-bigquery
     variant: z3z1ma
     pip_url: git+https://github.com/z3z1ma/target-bigquery.git
     config:
-      project: ntu-sctp-dsai1f-project-team6 # Update this to your GCP project ID.
-      dataset: citibike_ingestion # Update this to your dataset name.
+      project: ${BIGQUERY_PROJECT}
+      dataset: ${BIGQUERY_SOURCE_DATASET}
       method: batch_job
       denormalized: true
       flattening_enabled: true
       flattening_max_depth: 1
-      credentials_path: ./ntu-sctp-dsai1f-project-team6-e8498477876b.json # Update this path to your service account key file.
+      credentials_path: ${BIGQUERY_CREDENTIALS_PATH}
+      batch_size: 1000000  # Increased batch size
+      max_parallelism: 32  # Parallel upload threads
+      overwrite: true
+      upsert: true

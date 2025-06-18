@@ -1,10 +1,10 @@
-from dagster import resource
+from dagster import EnvVar, resource
 from dagster_dbt import DbtCliResource
 
 # Update the following absolute paths to point to the Meltano and dbt projects.
-meltano_dir = "../../../citibike-ingestion"
+meltano_dir = EnvVar("MELTANO_PROJECT_ROOT").get_value()
 
-dbt_dir = "/insert_path_to_project/ntu-sctp-dsai1f-project-team6/citibike_dbt"
+dbt_dir = EnvVar("DBT_PROJECT_ROOT").get_value()
 
 # Meltano resources
 meltano_tap = "tap-github"
