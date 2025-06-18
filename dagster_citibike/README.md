@@ -1,4 +1,4 @@
-# dagster_citibike
+# Citibike Trip Data ELT Orchestration
 
 This is a [Dagster](https://dagster.io/) project scaffolded with [`dagster project scaffold`](https://docs.dagster.io/guides/build/projects/creating-a-new-project).
 
