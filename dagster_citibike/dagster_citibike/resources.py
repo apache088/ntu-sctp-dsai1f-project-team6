@@ -1,7 +1,7 @@
 from dagster import EnvVar, resource
 from dagster_dbt import DbtCliResource
 
-# Update the following absolute paths to point to the Meltano and dbt projects.
+# Ensure the following absolute paths point to the Meltano and dbt projects.
 meltano_dir = EnvVar("MELTANO_PROJECT_ROOT").get_value()
 
 dbt_dir = EnvVar("DBT_PROJECT_ROOT").get_value()
