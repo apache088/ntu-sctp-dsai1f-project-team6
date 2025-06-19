@@ -1,0 +1,13 @@
+version: 2
+
+models:
+
+  # Staging model metadata
+  - name: staging
+    description: "Cleaned staging of raw trips"
+    columns:
+      - name: trip_id # Your primary key
+        description: "The primary key for this staging table"
+        tests:
+          - unique
+          - not null

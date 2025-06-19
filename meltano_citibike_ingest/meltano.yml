@@ -1,0 +1,30 @@
+version: 1
+default_environment: dev
+project_id: e61bcb42-a62d-43b4-ad77-d7ffea950a39
+environments:
+- name: dev
+- name: staging
+- name: prod
+plugins:
+  extractors:
+  - name: tap-duckdb
+    variant: meltanolabs
+    pip_url: git+https://github.com/MeltanoLabs/tap-duckdb.git
+    config:
+      flattening_enabled: true
+      flattening_max_depth: 1
+      path: /home/zachary1994/ntu-sctp-dsai1f-project-team6/db/citibike-tripdata.db
+  loaders:
+  - name: target-bigquery
+    variant: z3z1ma
+    pip_url: git+https://github.com/z3z1ma/target-bigquery.git
+    config:
+      project: studious-plate-461104-e0
+      dataset: citibike
+      credentials_path: 
+        /home/zachary1994/ntu-sctp-dsai1f-project-team6/studious-plate-461104-e0-ae70cf69c4ca.json #Using this service account
+      method: batch_job
+      denormalized: true
+      flattening_enabled: true
+      flattening_max_depth: 1
+      batch_size: 500
