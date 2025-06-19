@@ -1,0 +1,39 @@
+Running with dbt=1.9.8
+Registered adapter: bigquery=1.9.1
+Found 8 models, 1 snapshot, 2 seeds, 47 data tests, 1 source, 883 macros
+
+Concurrency: 1 threads (target='dev')
+
+1 of 3 START sql table model citibike.stg_station_cities ....................... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+1 of 3 OK created sql table model citibike.stg_station_cities .................. [[32mCREATE TABLE (84.0 rows, 637.3 KiB processed)[0m in 3.65s]
+2 of 3 START sql table model citibike.stg_station_coords ....................... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+2 of 3 OK created sql table model citibike.stg_station_coords .................. [[32mCREATE TABLE (182.0 rows, 7.9 MiB processed)[0m in 3.73s]
+3 of 3 START seed file citibike.station_cities ................................. [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+3 of 3 OK loaded seed file citibike.station_cities ............................. [[32mINSERT 3[0m in 5.31s]
+
+Finished running 1 seed, 2 table models in 0 hours 0 minutes and 14.48 seconds (14.48s).
+
+[32mCompleted successfully[0m
+
+Done. PASS=3 WARN=0 ERROR=0 SKIP=0 TOTAL=3

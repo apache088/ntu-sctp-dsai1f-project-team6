@@ -1,0 +1,548 @@
+Running with dbt=1.9.8
+Registered adapter: bigquery=1.9.1
+Found 8 models, 1 snapshot, 2 seeds, 47 data tests, 1 source, 883 macros
+
+Concurrency: 1 threads (target='dev')
+
+1 of 58 START sql table model citibike.dim_bike_types .......................... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+1 of 58 OK created sql table model citibike.dim_bike_types ..................... [[32mCREATE TABLE (2.0 rows, 1.3 MiB processed)[0m in 4.55s]
+2 of 58 START sql table model citibike.dim_membership_types .................... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+2 of 58 OK created sql table model citibike.dim_membership_types ............... [[32mCREATE TABLE (2.0 rows, 728.3 KiB processed)[0m in 17.72s]
+3 of 58 START sql table model citibike.dim_time ................................ [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+3 of 58 OK created sql table model citibike.dim_time ........................... [[32mCREATE TABLE (32.0 rows, 728.3 KiB processed)[0m in 3.42s]
+4 of 58 START sql table model citibike.stg_station_cities ...................... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+4 of 58 OK created sql table model citibike.stg_station_cities ................. [[32mCREATE TABLE (84.0 rows, 637.3 KiB processed)[0m in 14.02s]
+5 of 58 START sql table model citibike.stg_station_coords ...................... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+5 of 58 OK created sql table model citibike.stg_station_coords ................. [[32mCREATE TABLE (182.0 rows, 7.9 MiB processed)[0m in 3.67s]
+6 of 58 START seed file citibike.price_plans ................................... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+6 of 58 OK loaded seed file citibike.price_plans ............................... [[32mINSERT 4[0m in 11.55s]
+7 of 58 START seed file citibike.station_cities ................................ [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+7 of 58 OK loaded seed file citibike.station_cities ............................ [[32mINSERT 3[0m in 18.52s]
+8 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_dim_bike_types_bike_type_id__string  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+8 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_dim_bike_types_bike_type_id__string  [[32mPASS[0m in 1.85s]
+9 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_dim_bike_types_type__string  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+9 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_dim_bike_types_type__string  [[32mPASS[0m in 1.73s]
+10 of 58 START test not_null_dim_bike_types_bike_type_id ....................... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+10 of 58 PASS not_null_dim_bike_types_bike_type_id ............................. [[32mPASS[0m in 1.56s]
+11 of 58 START test not_null_dim_bike_types_type ............................... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+11 of 58 PASS not_null_dim_bike_types_type ..................................... [[32mPASS[0m in 1.62s]
+12 of 58 START test unique_dim_bike_types_bike_type_id ......................... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+12 of 58 PASS unique_dim_bike_types_bike_type_id ............................... [[32mPASS[0m in 1.69s]
+13 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_dim_membership_types_membership_type_id__string  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+13 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_dim_membership_types_membership_type_id__string  [[32mPASS[0m in 1.92s]
+14 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_dim_membership_types_type__string  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+14 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_dim_membership_types_type__string  [[32mPASS[0m in 1.83s]
+15 of 58 START test not_null_dim_membership_types_membership_type_id ........... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+15 of 58 PASS not_null_dim_membership_types_membership_type_id ................. [[32mPASS[0m in 1.62s]
+16 of 58 START test not_null_dim_membership_types_type ......................... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+16 of 58 PASS not_null_dim_membership_types_type ............................... [[32mPASS[0m in 1.58s]
+17 of 58 START test unique_dim_membership_types_membership_type_id ............. [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+17 of 58 PASS unique_dim_membership_types_membership_type_id ................... [[32mPASS[0m in 1.52s]
+18 of 58 START sql table model citibike.dim_stations ........................... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+18 of 58 OK created sql table model citibike.dim_stations ...................... [[32mCREATE TABLE (84.0 rows, 9.5 KiB processed)[0m in 3.62s]
+19 of 58 START sql table model citibike.dim_price_plans ........................ [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+19 of 58 OK created sql table model citibike.dim_price_plans ................... [[32mCREATE TABLE (4.0 rows, 282.0 Bytes processed)[0m in 3.47s]
+20 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_dim_price_plans_bike_type__string  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+20 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_dim_price_plans_bike_type__string  [[32mPASS[0m in 2.51s]
+21 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_dim_price_plans_included_mins__int64  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+21 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_dim_price_plans_included_mins__int64  [[32mPASS[0m in 1.74s]
+22 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_dim_price_plans_membership_type__string  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+22 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_dim_price_plans_membership_type__string  [[32mPASS[0m in 1.74s]
+23 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_dim_price_plans_per_minute_pricing__float64  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+23 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_dim_price_plans_per_minute_pricing__float64  [[32mPASS[0m in 1.74s]
+24 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_dim_price_plans_price_plan_id__int64  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+24 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_dim_price_plans_price_plan_id__int64  [[32mPASS[0m in 1.81s]
+25 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_dim_price_plans_unlock_fee__float64  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+25 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_dim_price_plans_unlock_fee__float64  [[32mPASS[0m in 1.62s]
+26 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_dim_price_plans_valid_from__date  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+26 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_dim_price_plans_valid_from__date  [[32mPASS[0m in 1.70s]
+27 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_dim_price_plans_valid_to__date  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+27 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_dim_price_plans_valid_to__date  [[32mPASS[0m in 1.71s]
+28 of 58 START test not_null_dim_price_plans_bike_type ......................... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+28 of 58 PASS not_null_dim_price_plans_bike_type ............................... [[32mPASS[0m in 1.72s]
+29 of 58 START test not_null_dim_price_plans_membership_type ................... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+29 of 58 PASS not_null_dim_price_plans_membership_type ......................... [[32mPASS[0m in 1.44s]
+30 of 58 START test not_null_dim_price_plans_price_plan_id ..................... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+30 of 58 PASS not_null_dim_price_plans_price_plan_id ........................... [[32mPASS[0m in 1.57s]
+31 of 58 START test unique_dim_price_plans_price_plan_id ....................... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+31 of 58 PASS unique_dim_price_plans_price_plan_id ............................. [[32mPASS[0m in 1.66s]
+32 of 58 START sql table model citibike.fact_trips ............................. [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+32 of 58 OK created sql table model citibike.fact_trips ........................ [[32mCREATE TABLE (92.6k rows, 10.1 MiB processed)[0m in 4.19s]
+33 of 58 START test dbt_expectations_expect_column_pair_values_A_to_be_greater_than_B_fact_trips_ended_at__started_at  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+33 of 58 PASS dbt_expectations_expect_column_pair_values_A_to_be_greater_than_B_fact_trips_ended_at__started_at  [[32mPASS[0m in 1.55s]
+34 of 58 START test dbt_expectations_expect_column_values_to_be_between_fact_trips_duration_mins__0__True  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+34 of 58 PASS dbt_expectations_expect_column_values_to_be_between_fact_trips_duration_mins__0__True  [[32mPASS[0m in 1.76s]
+35 of 58 START test dbt_expectations_expect_column_values_to_be_between_fact_trips_price_paid__0__False  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+35 of 58 PASS dbt_expectations_expect_column_values_to_be_between_fact_trips_price_paid__0__False  [[32mPASS[0m in 1.69s]
+36 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_fact_trips_bike_type_id__string  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+36 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_fact_trips_bike_type_id__string  [[32mPASS[0m in 1.86s]
+37 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_fact_trips_duration_mins__int64  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+37 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_fact_trips_duration_mins__int64  [[32mPASS[0m in 1.76s]
+38 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_fact_trips_end_station_key__string  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+38 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_fact_trips_end_station_key__string  [[32mPASS[0m in 2.57s]
+39 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_fact_trips_ended_at__timestamp  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+39 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_fact_trips_ended_at__timestamp  [[32mPASS[0m in 1.94s]
+40 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_fact_trips_membership_type_id__string  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+40 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_fact_trips_membership_type_id__string  [[32mPASS[0m in 1.75s]
+41 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_fact_trips_price_paid__float64  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+41 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_fact_trips_price_paid__float64  [[32mPASS[0m in 1.63s]
+42 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_fact_trips_price_plan_id__int64  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+42 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_fact_trips_price_plan_id__int64  [[32mPASS[0m in 1.81s]
+43 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_fact_trips_start_station_key__string  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+43 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_fact_trips_start_station_key__string  [[32mPASS[0m in 1.79s]
+44 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_fact_trips_started_at__timestamp  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+44 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_fact_trips_started_at__timestamp  [[32mPASS[0m in 1.67s]
+45 of 58 START test dbt_expectations_expect_column_values_to_be_of_type_fact_trips_trip_id__string  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+45 of 58 PASS dbt_expectations_expect_column_values_to_be_of_type_fact_trips_trip_id__string  [[32mPASS[0m in 1.88s]
+46 of 58 START test not_null_fact_trips_bike_type_id ........................... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+46 of 58 PASS not_null_fact_trips_bike_type_id ................................. [[32mPASS[0m in 1.96s]
+47 of 58 START test not_null_fact_trips_end_station_key ........................ [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+47 of 58 PASS not_null_fact_trips_end_station_key .............................. [[32mPASS[0m in 1.65s]
+48 of 58 START test not_null_fact_trips_membership_type_id ..................... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+48 of 58 PASS not_null_fact_trips_membership_type_id ........................... [[32mPASS[0m in 1.54s]
+49 of 58 START test not_null_fact_trips_price_plan_id .......................... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+49 of 58 PASS not_null_fact_trips_price_plan_id ................................ [[32mPASS[0m in 1.62s]
+50 of 58 START test not_null_fact_trips_start_station_key ...................... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+50 of 58 PASS not_null_fact_trips_start_station_key ............................ [[32mPASS[0m in 1.79s]
+51 of 58 START test not_null_fact_trips_trip_id ................................ [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+51 of 58 PASS not_null_fact_trips_trip_id ...................................... [[32mPASS[0m in 1.64s]
+52 of 58 START test relationships_fact_trips_bike_type_id__bike_type_id__ref_dim_bike_types_  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+52 of 58 PASS relationships_fact_trips_bike_type_id__bike_type_id__ref_dim_bike_types_  [[32mPASS[0m in 1.63s]
+53 of 58 START test relationships_fact_trips_end_station_key__station_key__ref_dim_stations_  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+53 of 58 PASS relationships_fact_trips_end_station_key__station_key__ref_dim_stations_  [[32mPASS[0m in 1.61s]
+54 of 58 START test relationships_fact_trips_membership_type_id__membership_type_id__ref_dim_membership_types_  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+54 of 58 PASS relationships_fact_trips_membership_type_id__membership_type_id__ref_dim_membership_types_  [[32mPASS[0m in 1.65s]
+55 of 58 START test relationships_fact_trips_price_plan_id__price_plan_id__ref_price_plans_  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+55 of 58 PASS relationships_fact_trips_price_plan_id__price_plan_id__ref_price_plans_  [[32mPASS[0m in 5.97s]
+56 of 58 START test relationships_fact_trips_start_station_key__station_key__ref_dim_stations_  [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+56 of 58 PASS relationships_fact_trips_start_station_key__station_key__ref_dim_stations_  [[32mPASS[0m in 1.70s]
+57 of 58 START test unique_fact_trips_trip_id .................................. [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+57 of 58 PASS unique_fact_trips_trip_id ........................................ [[32mPASS[0m in 1.98s]
+58 of 58 START snapshot snapshots.fact_trips_snapshot .......................... [RUN]
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+/home/hanafi/miniconda3/envs/dsai_project/lib/python3.10/site-packages/dbt/adapters/bigquery/connections.py:570: FutureWarning: job_retry must be explicitly set to None if job_id is set.
+BigQuery cannot retry a failed job by using the exact
+same ID. Setting job_id without explicitly disabling
+job_retry will raise an error in the future. To avoid this
+warning, either use job_id_prefix instead (preferred) or
+set job_retry=None.
+query_job = client.query(
+58 of 58 OK snapshotted snapshots.fact_trips_snapshot .......................... [[32mMERGE (0.0 rows, 25.1 MiB processed)[0m in 13.32s]
+
+Finished running 2 seeds, 1 snapshot, 8 table models, 47 data tests in 0 hours 3 minutes and 8.36 seconds (188.36s).
+
+[32mCompleted successfully[0m
+
+Done. PASS=58 WARN=0 ERROR=0 SKIP=0 TOTAL=58
