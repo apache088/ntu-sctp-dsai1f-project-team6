@@ -7,7 +7,7 @@ meltano_dir = EnvVar("MELTANO_PROJECT_ROOT").get_value()
 dbt_dir = EnvVar("DBT_PROJECT_ROOT").get_value()
 
 # Meltano resources
-meltano_tap = "tap-github"
+meltano_tap = "tap-duckdb"
 meltano_target = "target-bigquery"
 meltano_args = ["meltano", "run", meltano_tap, meltano_target]
 
