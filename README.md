@@ -13,7 +13,7 @@ The solution implements a Extract Load Transform (**ELT**) data stack:
 1. **[Transformation](./citibike_dbt/README.md)**
    - dbt models structure the data into a Star Schema:
      - 1 fact table (`fact_trips`)
-     - 4 dimension tables (`dim_stations`, `dim_bike_types`, `dim_membership_types`, 'price_plans')
+     - 4 dimension tables (`dim_stations`, `dim_bike_types`, `dim_membership_types`, `price_plans`)
 
 1. **[Orchestration](./dagster_citibike/README.md)**
    - Dagster connects and automates ELT pipeline:
