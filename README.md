@@ -1,7 +1,7 @@
 # Citibike Trip Data Analysis: Identifying Failed Rides & Revenue Impact
 
 ## Project Overview
-This data pipeline analyzes Jersey City's Citibike trip data (sourced from [Citibike's official tripdata](https://s3.amazonaws.com/tripdata/index.html)) to identify operational inefficiencies and quantify their financial impact. The project focuses on detecting **failed rides** - trips where users likely encountered technical issues (evidenced by identical start/end stations with abnormally short durations) - and calculates their effect on business revenue.
+This data pipeline analyzes Jersey City's Citibike trip data (sourced from [Citibike's official tripdata](https://s3.amazonaws.com/tripdata/index.html)) to identify operational trends and quantify their financial impact. The project focuses on revenue affecting analysis such as usage trends, station popularity, and inferred **bike failure rates** - from trips where users likely encountered technical issues (evidenced by identical start/end stations with abnormally short durations).
 
 ## Technical Architecture
 
