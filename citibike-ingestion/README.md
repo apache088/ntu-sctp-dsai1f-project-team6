@@ -1,6 +1,6 @@
 # Citibike Trip Data Extraction and Loading
 
-![alt text](meltano_data_ingestation.jpg)
+<img src="assets/meltano_data_ingestation.jpg" width="75%" />
 
 Data is downloaded as csv file from the citybikenyc website ([here ](https://citibikenyc.com/system-data) and [here](https://s3.amazonaws.com/tripdata/index.html)) and load into DuckDB (local data source).
 
