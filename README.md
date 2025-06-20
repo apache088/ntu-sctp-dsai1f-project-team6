@@ -25,14 +25,15 @@ The solution implements a Extract Load Transform (**ELT**) data stack:
      - Triggers dbt transformations
 
 ## Business Value
-- **Analysis**
+- **[Analysis](./Analysis/README.md)**
   - Analyse Usage Trends throughout the Day
      - Avg Trip Count per Day in 15 mins intervals, seperated by weekdays and weekends
   - Revenue Insights
      - Look into the Revenue and Trip Count Composition by Membership and Bike Type
   - Start and End Station Popularity
+     - Look into heat maps of popular bike stations based on latitude, longitude, station names, and total count of start and end times
   - Anomaly Detection
-  - Failed ride detection algorithm (same-station trips < threshold duration)
+     - Detect outliers based on duration_minutes and distance_metres
 
 - **Further actions for business consideration**
    - Introduce Time-Based Pricing
