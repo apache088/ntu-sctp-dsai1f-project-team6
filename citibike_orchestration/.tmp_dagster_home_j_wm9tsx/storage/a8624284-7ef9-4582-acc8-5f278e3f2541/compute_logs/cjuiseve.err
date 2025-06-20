@@ -1,7 +1,0 @@
-[32m2025-06-19 02:25:40 +0800[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - a8624284-7ef9-4582-acc8-5f278e3f2541 - 838257 - LOGS_CAPTURED - Started capturing logs in process (pid: 838257).
-[32m2025-06-19 02:25:40 +0800[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - a8624284-7ef9-4582-acc8-5f278e3f2541 - 838257 - citibike_tripdata - STEP_START - Started execution of step "citibike_tripdata".
-[32m2025-06-19 02:25:41 +0800[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - a8624284-7ef9-4582-acc8-5f278e3f2541 - 838257 - citibike_tripdata - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
-[32m2025-06-19 02:25:41 +0800[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - a8624284-7ef9-4582-acc8-5f278e3f2541 - citibike_tripdata - Writing file at: /home/hanafi/ntu-sctp-dsai1f-project-team6/citibike_orchestration/.tmp_dagster_home_j_wm9tsx/storage/citibike_tripdata using PickledObjectFilesystemIOManager...
-[32m2025-06-19 02:25:41 +0800[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - a8624284-7ef9-4582-acc8-5f278e3f2541 - 838257 - citibike_tripdata - ASSET_MATERIALIZATION - Materialized value citibike_tripdata.
-[32m2025-06-19 02:25:41 +0800[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - a8624284-7ef9-4582-acc8-5f278e3f2541 - 838257 - citibike_tripdata - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
-[32m2025-06-19 02:25:41 +0800[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - a8624284-7ef9-4582-acc8-5f278e3f2541 - 838257 - citibike_tripdata - STEP_SUCCESS - Finished execution of step "citibike_tripdata" in 556ms.
