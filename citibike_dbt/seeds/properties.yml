@@ -6,7 +6,7 @@ seeds:
       quote_columns: true
       column_types: {membership_type: string, bike_type: string, unlock_fee: float, per_minute_pricing: float, included_mins: integer}
       delimiter: ","
-      tests:
+    tests:
       - dbt_expectations.expect_column_pair_values_A_to_be_greater_than_B:
           column_A: valid_to
           column_B: valid_from
