@@ -24,5 +24,5 @@ Once the raw data is available in BigQuery, we can use dbt to clean, test and mo
 
 <p align="middle">
   <img src="https://github.com/apache088/ntu-sctp-dsai1f-project-team6/blob/dev/assets/excel_data_rows.jpg" width="500" />
-  <img src="https://github.com/apache088/ntu-sctp-dsai1f-project-team6/blob/dev/assets/bigquery_data_rows.jpg" width="500" /> 
+  <img src="https://github.com/apache088/ntu-sctp-dsai1f-project-team6/blob/dev/assets/bigquery_data_rows.jpg" width="800" /> 
 </p>
