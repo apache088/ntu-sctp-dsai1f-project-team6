@@ -1,0 +1,5 @@
+# Ignore service account JSON key
+forward-garden-461903-m9-863379912db1.json
+
+# Or if it's in a subfolder:
+Documents/forward-garden-461903-m9-863379912db1.json
