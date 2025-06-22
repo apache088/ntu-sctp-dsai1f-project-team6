@@ -3,6 +3,10 @@
 ## Project Overview
 This data pipeline analyzes Jersey City's Citibike trip data (sourced from [Citibike's official tripdata](https://s3.amazonaws.com/tripdata/index.html)) to identify operational trends and quantify their financial impact. The project focuses on revenue affecting analysis such as usage trends, station popularity, and inferred **bike failure rates** - from trips where users likely encountered technical issues (evidenced by identical start/end stations with abnormally short durations).
 
+## Usage
+- To use this project, please follow the steps detailed in the [Technical Architecture](#technical-architecture) section.
+- Additional materials for this project can be found at the [documents](./documents) directory.
+
 ## Technical Architecture
 
 <img src="https://github.com/user-attachments/assets/f86ed486-b8c7-429c-a93b-fd89655e572e" width="75%" />
