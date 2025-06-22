@@ -20,7 +20,7 @@ We use Meltano to orchestrate an EL pipeline:
 
   2) Loader ( target-bigquery ): will receive that stream and load it into BigQuery inside Google Cloud Project
 
-After loading the raw data into BigQuery, we verify the ingestion by comparing the row count in the source file with the row count in BigQuery (see screenshots below circle in <code style="color : red">red</code>).
+After loading the raw data into BigQuery, we verify the ingestion by comparing the row count in the source file with the row count in BigQuery (see screenshots below circle in $${\color{red}**red**}$$ ).
 
 <p align="middle">
   <img src="https://github.com/apache088/ntu-sctp-dsai1f-project-team6/blob/dev/assets/excel_data_rows.jpg" width="400" />
