@@ -24,13 +24,17 @@ This is a [Dagster](https://dagster.io/) project that automates the running of:
     - `dagster dev`
   - Open http://localhost:3000 on a browser for Dagster UI.
 - On Dagster UI:
-  - First materialize the `citibike_meltano` asset
-    - This must complete before dbt transformation can be done. 
-  - Materialize the `default` asset group for dbt transformation.
+  - You can choose to materialize via jobs or individual assets.
+  - It is recommended to materialize via jobs, which provide asset dependency checks to ensure proper materialization.
+  - In the case of materilizing via individual assets:
+    - Only the `citibike_ingestion_duckdb_bigquery` asset can be materialized on its own.
+    - If both the `citibike_ingestion_duckdb_bigquery` asset and the `default` asset group (for dbt transformation) are selected to be materialized in the same run:
+      - There is no guarantee that the ingestion will complete before the dbt data transformations are done.
+      - Use the `citibike_elt` job instead for a full, ordered ELT process.
 
 ## Assets
-- There are 2 assets in project.
-- Each is meant to drive their respective ELT stages using their respective ELT projects with minimal configuration.
+- There are 3 assets in project.
+- Each (except citibike_mock_ingestion) is meant to drive their respective ELT stages using their respective ELT projects with minimal configuration.
 - The reason for this design is to maintain separation of logic between ELT steps and the automation (Dagster).
 - This allows the intended operators of ELT projects (e.g. data scientists) and Dagster (data engineers) to work independently without interfering with each other.
 
@@ -39,13 +43,46 @@ This is a [Dagster](https://dagster.io/) project that automates the running of:
 - Defined at:
   - dagster_citibike/dagster_citibike/assets/[meltano_assets.py](dagster_citibike/assets/meltano_assets.py)
 
-### citibike_dbt
+### citibike_dbt_elt
 - Automates all the dbt steps done at [citibike_dbt](../citibike_dbt).
-- If there are new material to ingest, ensure that `citibike_ingestion_duckdb_bigquery` completes before running this.
+- Will run only if there has been a new ingestion.
+  - A mock ingestion can be used to trigger the dbt run without a real ingestion.
+- The selection of real or mock ingestion is made via resources.JobConfig during Job creation in [definitions.py](../dagster_citibike/dagster_citibike/definitions.py).
+- Checks for a new ingestion for 5 minutes.
+  - If none is found, this asset will terminate and dbt will not run.
 - Defined at:
   - dagster_citibike/dagster_citibike/assets/[dbt_assets.py
-](dagster_citibike/assets/dbt_assets.py
-)
+](dagster_citibike/assets/dbt_assets.py)
+
+### citibike_mock_ingestion
+- A mock ingestion asset to trigger dbt run (downstream) without a real ingestion.
+- The mock ingestion does nothing but sets some metadata so that the subsequent dbt asset in the same run thinks that an ingestion has occurred. 
+- Defined at:
+  - dagster_citibike/dagster_citibike/assets/[dbt_assets.py
+](dagster_citibike/assets/dbt_assets.py)
+
+
+## Jobs
+- There are 2 jobs in this project.
+
+### citibike_elt
+- This runs the full Citibike ELT with Meltano ingestion and dbt transformations.
+  - The dbt transformations are ordered to occur only after ingestion has succeeded.
+- It uses the following assets:
+  - `citibike_ingestion_duckdb_bigquery`
+  - `citibike_dbt_elt`
+- Defined at:
+  - dagster_citibike/dagster_citibike/[definitions.py](../dagster_citibike/dagster_citibike/definitions.py)
+
+### dbt_only
+- This runs only the dbt transformations of the Citibike ELT.
+- It achieves this by running a mock ingestion before the dbt transformations.
+- It uses the following assets:
+  - `citibike_mock_ingestion`
+  - `citibike_dbt_elt`
+- Defined at:
+  - dagster_citibike/dagster_citibike/[definitions.py](../dagster_citibike/dagster_citibike/definitions.py)
+
 
 ## Potential issues
 - If running any of the assets result in some configuration errors:
