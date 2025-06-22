@@ -4,8 +4,43 @@
 This data pipeline analyzes Jersey City's Citibike trip data (sourced from [Citibike's official tripdata](https://s3.amazonaws.com/tripdata/index.html)) to identify operational trends and quantify their financial impact. The project focuses on revenue affecting analysis such as usage trends, station popularity, and inferred **bike failure rates** - from trips where users likely encountered technical issues (evidenced by identical start/end stations with abnormally short durations).
 
 ## Usage
-- To use this project, please follow the steps detailed in the [Technical Architecture](#technical-architecture) section.
-- Additional materials for this project can be found at the [documents](./documents) directory.
+To use this project, please perform the following in order.
+### Prerequisites
+1. Open a VS Code terminal.
+   - **Perform _all_ subsequent CLI commands of this project in this terminal**.
+   - Go to the project root directory if not already there.
+1. Create the conda environment required using the provided [environment.yml](environment.yml).
+   - `conda env create -f environment`
+1. Activate the conda environment:
+   - `conda activate dsai_project`
+1. Provide required parameters in [.env](.env).
+    - Create a `.env` file in root directory
+    - Copy the contents of [env.txt](env.txt) to `.env`.
+    - Provide all the missing values:
+      - All paths should be absolute paths.
+      - BigQuery:
+        - Project ID is required.
+        - Dataset names can be changed if desired.
+1. Load into environment the `.env` parameters using the [load_env.py](load_env.py) script:    
+   - `python load_env.py`
+
+### Potential issues
+  - `python-dotenv` not installed.
+    - This is the module that loads the .env into the project environment.
+    - It should have been installed and managed by our conda environment.
+    - If that does not work, this is an alternative to install it:
+      - `pip install python-dotenv`
+    - Sometimes the changes will only be in effect after VS Code is restarted.
+  - The .env loading will likely **NOT** work on a Mac terminal (as of last testing).
+    - Use the same VS Code terminal for all steps as instructed.
+  - Use absolute paths in `.env`.
+    - Relative paths do not work.
+
+### ELT    
+1. Follow the steps detailed in the [Technical Architecture](#technical-architecture) section.
+
+### Other documentation
+- Additional materials for this project (e.g. slides) can be found at the [documents](./documents) directory.
 
 ## Technical Architecture
 

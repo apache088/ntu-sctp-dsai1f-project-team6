@@ -4,7 +4,7 @@
 
 Data is downloaded as csv file from the citybikenyc website ([here ](https://citibikenyc.com/system-data) and [here](https://s3.amazonaws.com/tripdata/index.html)) and load into DuckDB (local data source).
 
-Load csv file into DuckDB:
+## Load csv file into DuckDB
 - We have provided 2 ways to perform this:
   - A Jupyter notebook at notebooks/[create_db.ipynb](../notebooks/create_db.ipynb)
   - A Python script at duckdb/[load_csv_to_duckdb.py](../duckdb/load_csv_to_duckdb.py)
@@ -14,7 +14,7 @@ Load csv file into DuckDB:
   - Using just 1 of the above methods is sufficient.
   - Please ensure the expected csv file (data/in/[JC-202505-citibike-tripdata.csv](../data/in/JC-202505-citibike-tripdata.csv)) is at the location required by the notebook/script before executing them.
 
-We use Meltano to orchestrate an EL pipeline:
+## Meltano to orchestrate an EL pipeline
 
   1) Extractor ( tap-duckdb ): to stream the raw data out of DuckDB
 
