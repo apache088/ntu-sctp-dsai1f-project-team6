@@ -21,3 +21,5 @@ We use Meltano to orchestrate an EL pipeline:
   2) Loader ( target-bigquery ): will receive that stream and load it into BigQuery inside Google Cloud Project
 
 Once the raw data is available in BigQuery, we can use dbt to clean, test and model the newly-ingested data.
+
+![image alt](https://github.com/apache088/ntu-sctp-dsai1f-project-team6/blob/dev/assets/excel_data_rows.jpg) ![image alt](https://github.com/apache088/ntu-sctp-dsai1f-project-team6/blob/dev/assets/bigquery_data_rows.jpg)
